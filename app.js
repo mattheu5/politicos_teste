@@ -51,7 +51,7 @@ app.engine(
   )
 
 app.get('/', function(req, res){
-    res.send('home')
+    res.render('home')
 })
 
 app.get('/termo-servico', (req, res)=>{
