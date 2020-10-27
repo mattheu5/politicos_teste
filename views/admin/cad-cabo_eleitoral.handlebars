@@ -1,0 +1,91 @@
+<h3>Cadastro Cabo Eleitoral</h3>
+
+{{#each fails}}
+
+<div class="alert alert-danger">
+{{text}}
+</div>
+{{/each}}
+
+<div class="card">
+<div class="card-body">
+<form action="" method="POST">
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label for="nome">Nome</label>
+      <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome">
+    </div>
+  <div class="form-group col-md-4">
+    <label for="endereco">Endereço Residencial</label>
+    <input type="text" class="form-control" name="endereco" id="endereco" placeholder="Endereço">
+  </div>
+     <div class="form-group col-md-4">
+      <label for="numero">Tel.(Whatsapp)</label>
+      <input type="number" class="form-control" name="numero" id="numero" placeholder="numero">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label for="ig">Instgram</label>
+      <input type="text" class="form-control" name="ig" id="ig" placeholder="Instgram">
+    </div>
+  <div class="form-group col-md-4">
+    <label for="fc">Facebook</label>
+    <input type="text" class="form-control" name="fc" id="fc" placeholder="">
+  </div>
+     <div class="form-group col-md-4">
+      <label for="tt">Twitter</label>
+      <input type="text" class="form-control" name="tt" id="tt" placeholder="">
+    </div>
+  </div>
+  <div class="form-row">
+     <div class="form-group col-md-6">
+      <label for="quantidade_votos">Quantidade de votos</label>
+      <input type="number" class="form-control" name="quantidade_votos" id="quantidade_votos" placeholder="">
+    </div>
+  </div>
+  <label for="email">E-mail</label>
+  <div class="form-group">
+      <div class="form-group icon">
+    <span class="fa fa-envelope form-control-feedback"></span>
+      <input type="text" name="email" class="form-control" placeholder="email">
+    </div>
+    </div>
+    <label for="senha">Senha</label>
+    <div class="form-group">
+      <div class="form-group icon">
+    <span class="fa fa-unlock form-control-feedback"></span>
+      <input type="password" name="senha" class="form-control" placeholder="senha">
+    </div>
+    </div>
+  <div class="form-row">
+    <div class="form-group col-md-3">
+      <label for="regiao_que_atua1">Região que Atua 1</label>
+      <input type="text" class="form-control" name="regiao_que_atua1" id="regiao_que_atua1" placeholder="">
+    </div>
+  <div class="form-group col-md-3">
+    <label for="regiao_que_atua2">Região que Atua 2</label>
+    <input type="text" class="form-control" name="regiao_que_atua2" id="regiao_que_atua2" placeholder="">
+  </div>
+     <div class="form-group col-md-3">
+      <label for="regiao_que_atua3">Região que Atua 3</label>
+      <input type="text" class="form-control" name="regiao_que_atua3" id="regiao_que_atua3" placeholder="">
+    </div>
+     <div class="form-group col-md-3">
+      <label for="regiao_que_atua4">Região que Atua 4</label>
+      <input type="text" class="form-control" name="regiao_que_atua4" id="regiao_que_atua4" placeholder="">
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Cadastrar</button>
+  <a href="/admin/lista/cabo" class="btn btn">Listar</a>
+</form>
+
+<style>
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+</style>  

@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="/">
+    <img src="https://trello-attachments.s3.amazonaws.com/5f631278fdb27f68510abade/30x30/37361ca28c2b53543b9b525231d5e6b7/200x2_2020.2_%281%29.png" width="30" height="30" class="d-inline-block align-top" alt="">
+    Politicos
+  </a>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="https://www.instagram.com/waittthesun/">Siga-nos</a>
+      </li>     
+      <li class="nav-item">
+        <a class="nav-link" href="#">Suporte</a>
+      </li>   
+      <div id="clock" onload="showTime()"></div>  
+  </div>
+</nav>
+
+<script type="text/javascript">
+  function showTime(){
+    var date = new Date()
+    var h = date.getHours()
+    var m = date.getMinutes()
+
+    var time = h + ':' + m;
+
+    document.getElementById('clock').innerText = time
+    document.getElementById('clock').textContent = time
+    
+  }
+</script>

@@ -1,0 +1,38 @@
+{{#each fails}}
+
+<div class="alert alert-danger">
+
+{{text}}
+
+</div>
+
+{{else}}
+
+{{/each}}
+
+<h3>Cadastro de usuario</h3>
+<div class="card">
+  <div class="card-body">
+<div>
+    <form action="" method="post">
+  <div class="form-group">
+      <label>Nome</label>
+       <input type="name" name="nome" class="form-control" placeholder="Nome">
+  </div>
+  <div class="form-group">
+    <label>Email</label>
+    <input type="email" name="email" class="form-control" placeholder="Email">
+    <small class="form-text text-muted">Nós nunca vamos compartilhar seu email com ninguém.</small>
+  </div>
+  <div class="form-group">
+    <label for="senha">Senha</label>
+    <input type="password" class="form-control" name="senha" placeholder="Senha"></br>
+    <label for="senha1">Repita sua senha</label>
+    <input type="password" class="form-control" name="senha1" placeholder="Senha">
+  </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Cadastrar</button></br>
+</form>
+</div>
+</div>
+</div>

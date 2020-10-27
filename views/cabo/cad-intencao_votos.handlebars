@@ -1,0 +1,191 @@
+<h3>Dados da intenção</h3>
+
+{{#each fails}}
+
+<div class="alert alert-danger">
+{{text}}
+</div>
+{{/each}}
+
+<div class="card">
+<div class="card-body">
+<form action="" method="POST">
+  <div class="form-row">
+   <div class="form-group col-md-5">
+     <label for="nome">Nome*</label>
+      <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome">
+   </div>
+   <div class="form-group col-md-3">
+    <label for="cpf">CPF*</label>
+      <input type="number" class="form-control" name="cpf" id="cpf" placeholder="00 00 0000">
+  </div>
+  <div class="form-group col-md-4">
+      <label for="apelido">Apelido</label>
+      <input type="text" class="form-control" name="apelido" id="nome" placeholder="">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-4">
+    <label for="datanasc">Data de nasimento*</label>
+    <input type="date" class="form-control" name="datanasc">
+    </div>
+    <div class="form-group col-md-4">
+    <label for="genero">Gênero</label>
+    <select class="form-control" name="genero">
+      <option selected>Feminino</option>
+      <option>Masculino</option>
+      <option>Personalizar</option>
+    </select>
+    </div>
+    <div class="form-group col-md-4">
+    <label for="grupo">Grupo</label>
+    <select class="form-control" name="grupo">
+      <option selected >Associação de bairro</option>
+      <option>Liderança do bairro</option>
+      <option>Religioso católico</option>
+      <option>Religioso evangélico</option>
+    </select>
+  </div>
+  </div>
+  <h3 class="h3">Endereço</h3>
+  <div class="form-row">
+  <div class="form-group col-md-4">
+  <label for="endereço">Endereço*</label>
+  <input type="text" class="form-control" name="endereço">
+  </div>
+  <div class="form-group col-md-1">
+    <label for="numero">Numero</label>
+    <input type="number" class="form-control" name="numero">
+  </div>
+  <div class="form-group col-md-3">
+    <label for="complemento">Complemento</label>
+    <input type="text" class="form-control" name="complemento">
+  </div>
+   <div class="form-group col-md-2">
+    <label for="complemento">Cidade</label>
+    <input type="text" class="form-control" name="cidade">
+  </div> 
+  <div class="form-group col-md-2">
+    <label for="complemento">Bairro</label>
+    <input type="text" class="form-control" name="cidade">
+  </div>
+  </div>
+  <br>
+  <h3 class="h3">Dados para contato</h3>
+  <label for="email">E-mail</label>
+  <div class="form-group">
+      <div class="form-group icon">
+    <span class="fa fa-envelope form-control-feedback"></span>
+      <input type="email" name="email" class="form-control" placeholder="email">
+    </div>
+       <div class="form-row">
+   <div class="form-group col-md-4">
+    <label for="telefone">Telefone*</label>
+      <input type="number" class="form-control" name="telefone" placeholder="00 00 0000">
+  </div>
+  <div class="form-group col-md-4">
+    <label for="tipo">Tipo</label>
+    <select class="form-control" name="tipo">
+      <option selected>Residencial</option>
+      <option>Celular</option>
+      <option>Comercial</option>
+      <option>Não informado</option>
+    </select>
+  </div>
+  <div class="form-group col-md-4">
+    <label for="operadora">Operadora</label>
+    <select class="form-control" name="operadora">
+      <option selected>Tim</option>
+      <option>Claro</option>
+      <option>Vivo</option>
+      <option>Oi</option>
+    </select>
+  </div>
+  </div>
+  </div>
+  <h3>Dados votação</h3>
+  <div class="form-row">
+   <div class="form-group col-md-6">
+    <label for="eleitor">Eleitor*</label>
+        <select class="form-control" name="eleitor">
+      <option selected>Sim</option>
+      <option>Não</option>
+    </select>
+  </div>
+   <div class="form-group col-md-6">
+    <label for="escola">Escola de votação*</label>
+        <select class="form-control" name="escola">
+      <option selected>...</option>
+      <option>Não</option>
+    </select>
+  </div>
+  </div>
+    <h3>Dados adicionais</h3>
+  <div class="form-row">
+   <div class="form-group col-md-4">
+    <label for="cpf">Status*</label>
+        <select class="form-control" name="status">
+      <option selected>Ativo</option>
+      <option>Inativo</option>
+    </select>
+  </div>
+     <div class="form-group col-md-4">
+    <label for="qntfilhos">Quantidade de filhos*</label>
+      <input type="number" class="form-control" name="qntfilhos" placeholder="">
+  </div>
+  <div class="form-group col-md-4">
+    <label for="estcivil">Estado civil*</label>
+        <select class="form-control" name="estcivil">
+      <option selected>Casado(a)</option>
+      <option>Divorciado(a)</option>
+      <option>Separado(a)</option>
+      <option>Solteiro(a)</option>
+      <option>Viúvo(a)</option>
+      <option>União Estável</option>
+    </select>
+    </div>
+    <div class="form-group col-md-4">
+    <label for="profissao">Profissão*</label>
+        <select class="form-control" name="profissao">
+      <option selected>Profissão</option>
+      <option>Profissão</option>
+      <option>Profissão</option>
+      <option>Profissão</option>
+      <option>Profissão</option>
+      <option>Profissão</option>
+      <option>Profissão</option>
+      <option>Profissão</option>
+      <option>Profissão</option>
+      <option>Profissão</option>
+      <option>Profissão</option>
+      <option>Profissão</option>
+      <option>Profissão</option>
+      <option>Profissão</option>
+      <option>Profissão</option>
+      <option>Profissão</option>
+      <option>Profissão</option>
+      <option>Profissão</option>
+      <option>Profissão</option>
+      <option>Profissão</option>
+      <option>Profissão</option>
+      <option>Profissão</option>
+    </select><br>
+     <div class="form-group">
+    <label for="obs">Obs</label>
+    <textarea class="form-control" name="obs" rows="3"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Cadastrar</button>
+   <a href="/cabo/lista/intencao_voto" class="btn btn">Listar</a>
+</form>
+</div>
+</div>
+
+<style>
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+</style>

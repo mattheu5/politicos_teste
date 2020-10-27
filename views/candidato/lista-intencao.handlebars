@@ -1,0 +1,46 @@
+<div class="container">
+<hr>
+    <h2>Intenção de voto</h2>
+<hr>
+<a class="btn btn-success" href="/candidato/cad/intencao_votos">Cadastrar nova Intenção de Voto</a>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+
+{{#each intecao}}
+
+        <tbody>
+            <th>{{dataValues.id}}</th>
+            <th>{{dataValues.nome}}</th>
+            <th>{{dataValues.email}}</th>
+            <th>
+                
+                <form method="post" action="/candidato/intencao/delete" style="display: inline;" onsubmit="confirmDel(event, this)">
+                    <input type="hidden" name="id" value="{{dataValues.id}}">
+                    <button class="btn btn-danger">Deletar</button>
+                </form>
+
+                <button class="btn btn-warning">Editar</button>
+
+            </th>
+            {{/each}}
+        </tbody>
+    </table>
+    
+</div>
+
+<script>
+    function confirmDel(event, form){
+        event.preventDefault();
+        var dec = confirm('Você tem certeza...?');
+        if(dec){
+            form.submit();
+        }
+    }
+</script>
