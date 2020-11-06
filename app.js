@@ -12,6 +12,7 @@ const cabo = require('./routes/cabo')
 const candidato = require('./routes/candidato')
 const cookieParser = require('cookie-parser');
 const passport = require("passport")
+const localStrategy = require('passport-local').Strategy
 
 app.use(cookieParser('1234'))
 app.use(session({

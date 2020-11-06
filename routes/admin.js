@@ -565,4 +565,11 @@ router.post('/cabo/update', (req, res)=>{
     })
 })
 
-module.exports = router 
+router.get('/canditado/votos', (req, res)=>{
+    Intencao.count()
+.then(function(count) {
+    console.log(count)
+});
+})
+
+module.exports = router
