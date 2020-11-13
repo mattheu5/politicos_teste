@@ -28,7 +28,9 @@
     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ58wfdF359-V9F8z6h1_4WhZO0n51GP9xZXQ&usqp=CAU" alt="" class="rounded float-left img-fluid" style="margin-top: 30px; margin-left: 30px;">
     <div style="padding-left: 300px; padding-top: 10px;">
       <canvas id="chart" style="height: 80px; width: 225px;"></canvas>
-    <h4 class="text-center">Faltam 250 votos</h4>
+    {{#each count}}
+    <h4 class="text-center">Faltam {{dataValues.count}} votos</h4>
+    {{/each}}
     </div>
   </div>
 </div>
@@ -45,7 +47,7 @@
         labels: ['Votos conquistados'],
         datasets: [{
             label: 'Número de votos',
-            data: [250],
+            data: [],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',

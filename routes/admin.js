@@ -565,10 +565,9 @@ router.post('/cabo/update', (req, res)=>{
     })
 })
 
-router.get('/canditado/votos', (req, res)=>{
-    Intencao.count()
-.then(function(count) {
-    console.log(count)
+router.post('/canditado/votos', (req, res)=>{
+    Intencao.count().then(function(count) {
+    res.render('/admin/cad', {count: count})
 });
 })
 
