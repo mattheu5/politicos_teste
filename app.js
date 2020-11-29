@@ -37,7 +37,7 @@ app.use((req, res, next) => {
 
 })
 
-app.use('/favicon.ico', express.static('images/favicon.ico'))
+app.use('/favicon.ico', express.static('public/favicon.ico'))
 app.use(bodyparser.urlencoded({ extended: false }))
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(bodyparser.json())
