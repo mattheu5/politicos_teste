@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs')
 const passport = require('passport')
 const Cabo = require('../db/Cabo')
 const Intencao = require('../db/Intencao')
-const { text } = require('body-parser')
+const { text, json } = require('body-parser')
 const Candidato = require('../db/Candidato')
 const localStrategy = require('passport-local').Strategy
 const router = express.Router()
@@ -36,9 +36,9 @@ router.get('/',  function(req, res){
     res.redirect('/admin/cad')
 })
 
-router.get('/login', (req, res)=>{
-    passport.use(new localStrategy({usernameField: "email", passwordField: 'senha'}, (email, senha, done)=>{
-        Usuario.findOne({where: {email: email}}).then((usuario)=>{
+router.get('/login', async (req, res)=>{
+    await passport.use(new localStrategy({usernameField: "email", passwordField: 'senha'}, async (email, senha, done)=>{
+        await Usuario.findOne({where: {email: email}}).then((usuario)=>{
             if(!usuario){
                 return done(null, false, {message: 'Essa conta não existe'})
             }
@@ -80,12 +80,12 @@ router.post("/login",  (req, res, next)=>{
     
 })
 
-router.post('/admin/cabo/delete', (req, res)=>{
+router.post('/admin/cabo/delete', async (req, res)=>{
 
     var id = req.body.id
 
     if(id != undefined){
-            Cabo.destroy({
+            await Cabo.destroy({
                 where:{
                     id: id
                 }
@@ -97,24 +97,24 @@ router.post('/admin/cabo/delete', (req, res)=>{
         }
 })
 
-router.get('/lista/candidato', function(req, res){
-    Candidato.findAll({order: [['id', 'DESC']]}).then(function(candidato){
+router.get('/lista/candidato',  async function(req, res){
+    await Candidato.findAll({order: [['id', 'DESC']]}).then(function(candidato){
         res.render('admin/lista-candidato', {
             candidato: candidato
          })
     })
 })
 
-router.get('/lista/cabo', function(req, res){
-    Cabo.findAll({order: [['id', 'DESC']]}).then(function(cabo){
+router.get('/lista/cabo', async function(req, res){
+    await Cabo.findAll({order: [['id', 'DESC']]}).then(function(cabo){
         res.render('admin/lista-cabo', {
             cabo: cabo
          })
     })
 })
 
-router.get('/lista/intencao_voto', function(req, res){
-    Intencao.findAll({order: [['id', 'DESC']]}).then(function(intecao){
+router.get('/lista/intencao_voto', async function(req, res){
+    await Intencao.findAll({order: [['id', 'DESC']]}).then(function(intecao){
         res.render('admin/lista-intencao', {
             intecao: intecao
          })
@@ -126,7 +126,7 @@ router.get('/usuario', (req, res) =>{
     res.render('admin/cad-usuario')
 })
 
-router.post('/usuario', (req, res) =>{
+router.post('/usuario', async (req, res) =>{
 
     var {nome, email, senha, senha1} = req.body
 
@@ -149,7 +149,7 @@ router.post('/usuario', (req, res) =>{
     } if(fails.length > 0){
         res.render('admin/cad-usuario', {fails: fails})
     } else {
-        Usuario.findOne({where: {email: email}}).then((usuario)=>{
+        await Usuario.findOne({where: {email: email}}).then( async (usuario)=>{
             if(usuario){
                 req.flash('fail_msg', 'Ja existe uma conta com esse email.')
                 res.redirect('usuario')
@@ -157,7 +157,7 @@ router.post('/usuario', (req, res) =>{
                 var salt = bcrypt.genSaltSync(10);
                 var hash = bcrypt.hashSync(senha, salt);
                
-                Usuario.create({
+                await Usuario.create({
                     nome: nome,
                     email: email,
                     senha: hash,
@@ -176,15 +176,29 @@ router.post('/usuario', (req, res) =>{
 })
 
 
-router.get('/cad',(req, res) =>{
+router.get('/cad', (req, res) =>{
     res.render('admin/cad')
+})
+
+router.post('/cad', (req, res)=>{
+    Intencao.count().then(async count=> {
+        await Candidato.findAll({raw: true, attributes: ['votos']}).then(votes=>{
+            var votos = votes[0].votos
+            console.log(votos)
+        res.render('admin/cad', {count: count, votes: votos})
+        console.log(count)
+    }).catch(err =>{
+        console.log(err)
+    })
+
+})
 })
 
 router.get('/cad/candidato', (req, res)=>{
     res.render('admin/cad-candidato')
 })
 
-router.post('/cad/candidato', upload.single('file'), (req, res)=>{
+router.post('/cad/candidato', upload.single('file'), async (req, res)=>{
 
     var fails = []
 
@@ -209,7 +223,7 @@ router.post('/cad/candidato', upload.single('file'), (req, res)=>{
     }
      else {
 
-        Candidato.findOne({where:{email: req.body.email}}).then((usuario)=>{
+        await Candidato.findOne({where:{email: req.body.email}}).then( async(usuario)=>{
             if(usuario){
                 req.flash('fail_msg', 'Ja existe uma conta com esse email.')
                 res.redirect('candidato')
@@ -218,7 +232,7 @@ router.post('/cad/candidato', upload.single('file'), (req, res)=>{
                 var salt = bcrypt.genSaltSync(10);
                 var hash = bcrypt.hashSync(req.body.senha, salt);
 
-        Candidato.create({
+        await Candidato.create({
             nome: req.body.nome,
             partido: req.body.partido,
             cidade: req.body.cidade,
@@ -248,7 +262,7 @@ router.get('/cad/cabo', (req, res)=>{
     res.render('admin/cad-cabo_eleitoral')
 })
 
-router.post('/cad/cabo',(req, res) =>{
+router.post('/cad/cabo', async (req, res) =>{
 
     var fails = []
 
@@ -270,7 +284,7 @@ router.post('/cad/cabo',(req, res) =>{
         res.render('admin/cad-cabo_eleitoral', {fails: fails})
     } else {
         
-        Cabo.findOne({where:{email: req.body.email}}).then((usuario)=>{
+        await Cabo.findOne({where:{email: req.body.email}}).then( async (usuario)=>{
             if(usuario){
                 req.flash('fail_msg', 'Ja existe uma conta com esse email.')
                 res.redirect('cabo')
@@ -280,7 +294,7 @@ router.post('/cad/cabo',(req, res) =>{
                 var salt = bcrypt.genSaltSync(10);
                 var hash = bcrypt.hashSync(req.body.senha, salt);
 
-        Cabo.create({
+        await Cabo.create({
             nome: req.body.nome,
             endereco: req.body.endereco,
             numero: req.body.numero,
@@ -565,10 +579,15 @@ router.post('/cabo/update', (req, res)=>{
     })
 })
 
-router.get('/canditado/votos', (req, res)=>{
-    Intencao.count().then(function(count) {
-    res.render('/admin/cad', {count: count})
-});
+router.post('/canditado/votos', (req, res)=>{
+ 
+})
+
+router.get('/logout', (req, res)=>{
+    req.session.user = undefined
+    var sessao = req.session.user
+    console.log(sessao)
+    res.redirect('/')
 })
 
 module.exports = router
