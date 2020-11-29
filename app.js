@@ -11,6 +11,7 @@ const cabo = require('./routes/cabo')
 const candidato = require('./routes/candidato')
 const cookieParser = require('cookie-parser');
 const passport = require("passport")
+const favicon = require('serve-favicon')
 const localStrategy = require('passport-local').Strategy
 
 app.use(cookieParser('1234'))
@@ -37,9 +38,9 @@ app.use((req, res, next) => {
 
 })
 
-app.use('/favicon.ico', express.static('public/favicon.ico'))
 app.use(bodyparser.urlencoded({ extended: false }))
 app.use(express.static(path.join(__dirname, 'public')))
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
 app.use(bodyparser.json())
 
 app.set("view engine", 'handlebars')
