@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize')
 
-const seq = new Sequelize('www1', 'www1', 'mt1233211233mt', {
-    host: 'www1.c8fpb19iwz53.sa-east-1.rds.amazonaws.com',
+const seq = new Sequelize('sincro56_politicos', 'sincro56_dev2', 'yD(siqc=.y-k', {
+    host: '50.116.87.125',
     dialect: 'mysql',
     port: '3306',
     define: {
